@@ -1,22 +1,22 @@
 # MANAGED BY PUPPET!
-<% if port -%>
-PORT="<%= port %>"
+<% if @port and ! @port.empty? -%>
+PORT="<%= @port %>"
 <% else -%>
 PORT="11211"
 <% end -%>
 USER="memcached"
-<% if maxconnection -%>
-MAXCONN="<%= maxconnection %>"
+<% if @maxconnection and ! @maxconnection.empty?  -%>
+MAXCONN="<%= @maxconnection %>"
 <% else -%>
 MAXCONN="1024"
 <% end -%>
-<% if cachesize -%>
-CACHESIZE="<%= cachesize %>"
+<% if @cachesize and ! @cachesize.empty? -%>
+CACHESIZE="<%= @cachesize %>"
 <% else -%>
 CACHESIZE="64"
 <% end -%>
-<% if options -%>
-OPTIONS="<%= options %>"
+<% if @options and ! @options.empty? -%>
+OPTIONS="<%= @options %>"
 <% else -%>
 OPTIONS=""
 <% end -%>
