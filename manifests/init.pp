@@ -15,10 +15,20 @@ class memcache {
     group  => 'memcached',
     mode   => '0755',
   }
-    
-  add_group { 'memcached': gid => 70 }
-    
-  add_service { 'memcached': gid => 70, groups => '', uid => 70 }
+
+  group { 'memcached':
+    ensure => present,
+    gid    => 70,
+  }
+
+  user { 'memcached':
+    ensure     => present,
+    gid        => 70,
+    home       => '/var/lib/memcached',
+    shell      => '/sbin/nologin',
+    managehome => true,
+    uid        => 70,
+  }
 
 }
 
