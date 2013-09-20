@@ -1,7 +1,9 @@
-define memcache::config ( $port = 11211,
-                          $maxconnection = 1024,
-                          $cachesize = 64,
-                          $options = '' ) {
+define memcache::config (
+  $port = 11211,
+  $maxconnection = 1024,
+  $cachesize = 64,
+  $options = ''
+) {
   $service = $::operatingsystem ? {
     /(?i-mx:centos|fedora|redhat|scientific)/ => 'memcached',
   }
