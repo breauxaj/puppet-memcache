@@ -14,6 +14,9 @@ memcache::config { 'default':
   options       => '',
 }
 ```
+```
+memcache::service { 'default': ensure => running, enable => true }
+```
 
 License
 -------
