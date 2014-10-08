@@ -1,4 +1,34 @@
-class memcache {
+# Class: memcache
+#
+# This class installs the memcached package
+#
+# Parameters:
+#
+#  ensure: (default latest)
+#    Determine the state of the packages
+#
+# Actions:
+#   - Installs the memcached package
+#
+# Requires:
+#
+# Sample Usage:
+#
+#  For a standard installation, use:
+#
+#    class { 'memcache':
+#      ensure => 'latest'
+#    }
+#
+#  To remove the installation, use:
+#
+#    class { 'memcache':
+#      ensure => 'absent'
+#    }
+#
+class memcache (
+  $ensure = 'latest'
+){
   $required = $::operatingsystem ? {
     /(?i-mx:centos|fedora|redhat|scientific)/ => 'memcached',
   }
@@ -7,7 +37,7 @@ class memcache {
     /(?i-mx:centos|fedora|redhat|scientific)/ => '/var/run/memcached',
   }
 
-  package { $required: ensure => latest }
+  package { $required: ensure => $ensure }
 
   file { $paths:
     ensure => directory,
